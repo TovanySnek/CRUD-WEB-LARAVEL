@@ -7,6 +7,17 @@ use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
+
+    public function listar()
+    {
+        require __DIR__ . '/../conectar_banco.php';
+
+        $produtos = $pdo->query('SELECT * FROM produto;')->fetchAll(\PDO::FETCH_ASSOC);
+
+        require __DIR__ . "/../View/Produto/listar.php";
+        
+    }
+    
     /**
      * Display a listing of the resource.
      */
